@@ -1,0 +1,8 @@
+djongo
+pymongo
+django
+pandas
+numpy
+gunicorn
+django-heroku
+json
