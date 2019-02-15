@@ -35,7 +35,7 @@ def matrix_factorization(full_matrix, P, Q, K, iteration=16000, alpha=0.0015, be
                         e = e + (beta/2) * ( pow(P[i][k],2) + pow(Q[k][j],2) )
         
         if (iterate+1) % 10 == 0:                     #This will display after 10 itrations
-                print("Iteration: " + str(iteration) +"error "+ str(e)))
+                print("Iteration: " + str(iteration) +"error "+ str(e))
         if e < 0.001:
             break
     full_matrix=numpy.matmul(P,Q.T)        
