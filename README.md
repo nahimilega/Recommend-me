@@ -30,13 +30,18 @@ Now open your web browser on paste the following url
 ```
 http://127.0.0.1:8000/mainpage/form
 ```
+# Roadmap
 
-
+movie-recommendation-system : This is the folder where Django website resides. All the frontend and backend 
 
 
 # Sources of reference <br />
-
+### Template used for frontend
+https://www.templatemonster.com/website-templates/57969.html
+### Dataset-
 Movie lens 2M dataset<br />
+
+### Ohere references-
 StackOverflow<br />
 https://towardsdatascience.com/various-implementations-of-collaborative-filtering-100385c6dfe0<br />
 https://github.com/yanneta/pytorch-tutorials/blob/master/collaborative-filtering-nn.ipynb<br />
