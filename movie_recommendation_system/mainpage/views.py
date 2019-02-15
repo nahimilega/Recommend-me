@@ -229,20 +229,19 @@ def most_similar_user(simalirity_dict,input_from_the_user):
     else:        
         #Item item filter goes here
         #It finds related movies(with rating>3) + top movies(keep some of them on the bases of imdb rating)
-        print("item_item runs")
+        
         list_of_recommended_movies_through_itemfilter=item_item_filter(input_from_the_user)
         list_of_most_popular_movies=most_popular_movies()
-        p1 = Process(target=run_gradient_decent(input_from_the_user))
-        p1.start()
-
-
-
-        if(len(list_of_recommended_movies_through_itemfilter)<15):
-            list_of_recommended_movies=list_of_recommended_movies_through_itemfilter
-            list_of_recommended_movies.extend(list_of_most_popular_movies[:(20-len(list_of_recommended_movies_through_itemfilter))])
-        else:
-            list_of_recommended_movies=list_of_recommended_movies_through_itemfilter[:15]
-            list_of_recommended_movies.extend(list_of_most_popular_movies[:5])
+        try:
+        	p1 = Process(target=run_gradient_decent(input_from_the_user))
+        	p1.start()
+        finally:
+        	if(len(list_of_recommended_movies_through_itemfilter)<15):
+        		list_of_recommended_movies=list_of_recommended_movies_through_itemfilter
+                list_of_recommended_movies.extend(list_of_most_popular_movies[:(20-len(list_of_recommended_movies_through_itemfilter))])
+            else:
+                list_of_recommended_movies=list_of_recommended_movies_through_itemfilter[:15]
+                list_of_recommended_movies.extend(list_of_most_popular_movies[:5])
 
         return list_of_recommended_movies
 
