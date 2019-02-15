@@ -1,0 +1,65 @@
+{% load staticfiles %} 
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light Theme</title>
+<link href="{% static 'css/simpleGridTemplate.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Main Container -->
+<div class="container"> 
+  <!-- Header -->
+  <header class="header">
+    <h4 class="logo">Here is some of the movie recomendation for you</h4>
+  </header>
+  <!-- Hero Section -->
+  
+  <!-- Stats Gallery Section -->
+  
+
+  {% for movie in all_movies  %}
+     {% if  forloop.counter0|divisibleby:4 %}
+        <div class="gallery">
+     {% endif %} 
+    
+    <div class="thumbnail"> <a href="#"><img src="{{ movie.thumbnail }}" alt="" width="2000" class="cards"/></a>
+      <h4>{{movie.movie_name}} {{ movie.year}}</h4>
+      <p class="tag">{{ movie.genre }}</p>
+      <p class="text_column">{{movie.sypnosis}}</p>
+    </div>
+   {% endfor %}
+  </div>
+  {% comment %} 
+  <div class="gallery">
+    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+      <h4>TITLE</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+      <h4>TITLE</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+      <h4>TITLE</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+      <h4>TITLE</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+   {% endcomment %}
+  <!-- Footer Section -->
+  
+</div>
+<!-- Main Container Ends -->
+</body>
+</html>

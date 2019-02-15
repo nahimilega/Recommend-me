@@ -1,0 +1,291 @@
+{% load staticfiles %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Agency Template</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+
+<link href="{% static 'css/simpleGridTemplate.css' %}" rel="stylesheet" type="text/css">
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<body bgcolor="black">
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#">Bran</a></div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a> </li>
+        <li> </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li> </li>
+        <li class="dropdown">
+          <ul class="dropdown-menu">
+            <li><a href="#">Another action</a> </li>
+            <li><a href="#">Something else here</a> </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!-- HEADER -->
+<header>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">Welcome To Movie recomendation </h1>
+          <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, dicta, cupiditate consequatur necessitatibus quos libero eius ipsum qui sit molestiae.</p>
+          <p>&nbsp;</p>
+          <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- / HEADER --> 
+
+<!--  SECTION-1 -->
+<section>
+  <div class="container ">
+
+<div class="row">
+      <div class="col-lg-12 page-header text-center">
+        <h2>Lets rate some movies</h2>
+      </div>
+    </div>
+   
+    {% comment %} {% url 'mainpage:result' %} {% endcomment %}
+
+<style>
+
+
+form {
+	width: 100px;
+  }
+  
+ .button {
+	border: 0;
+	background: black;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+	float: right;
+	color: white;
+  
+  }
+  .button2 {
+	border: 0;
+	background: black;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+	float: right;
+  	color: red;
+  }
+  
+  button:hover,
+  button:hover + button,
+  button:hover + button + button,
+  button:hover + button + button + button,
+  button:hover + button + button + button + button {
+	color: #ffed2d;
+  }
+
+
+</style>
+  <div class="col-6 col-lg-6" >
+    <div class="ex3">
+{% for movie in all_movies  %}
+    {% comment %} <div class="row"> {% endcomment %}
+ 
+
+  {% if  forloop.counter0|divisibleby:4 %}
+      <div class="gallery">
+     {% endif %} 
+    {% comment %}  
+    <div class="thumbnail"> <a ><img src="{{ movie.thumbnail }}" alt="" width="2000" class="cards"/></a>
+      <h4>{{movie.movie_name}}</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">{{movie.sypnosis}}</p>
+    {% endcomment %}
+
+
+
+
+	<form action="{% url 'mainpage:store_data' %}" method="POST"  >
+  {% csrf_token %}
+  <input type="hidden"  name="rating[post_id]" value="{{movie.id}}">
+   {% if movie.id in movies_user_have_chosen %}
+   {% with movie_unique_id=movie.id %}
+  
+   {% for key, value in current_rating.items %} 
+      {% if key == movie_unique_id %} {% with rating_of_this_movie=value %}
+       
+       <button {% if  rating_of_this_movie == 5 %} class="button button2"  {% else %} class="button"  {% endif %} type="submit" name="rating[rating]" value="5">&#9733;</button>
+  <button {% if  rating_of_this_movie > 3 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="4">&#9733;</button>
+  <button {% if  rating_of_this_movie > 2 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="3">&#9733;</button>
+  <button {% if  rating_of_this_movie > 1 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="2">&#9733;</button>
+  <button {% if  rating_of_this_movie > 0 %} class="button button2"   {% else %} class="button" {% endif %}  type="submit" name="rating[rating]" value="1">&#9733;</button>
+      
+      
+       {% endwith %} 
+       
+       {% endif %}
+   {% endfor %}   
+  {% endwith %} 
+  {% else %}
+  <button  class="button"   type="submit" name="rating[rating]" value="5">&#9733;</button>
+  <button  class="button"  type="submit" name="rating[rating]" value="4">&#9733;</button>
+  <button  class="button"  type="submit" name="rating[rating]" value="3">&#9733;</button>
+  <button  class="button"  type="submit" name="rating[rating]" value="2">&#9733;</button>
+  <button  class="button"   type="submit" name="rating[rating]" value="1">&#9733;</button>
+
+
+  {% endif %}
+
+  
+  </form>
+
+
+<img src="{{ movie.thumbnail }}" alt="Image Not available">
+  {{movie.imdb}}
+
+  {% comment %} </div> {% endcomment %}
+{% endfor %}
+
+
+
+
+
+
+  {% for movie in all_movies  %}
+     {% if  forloop.counter0|divisibleby:4 %}
+        <div class="gallery">
+     {% endif %} 
+    
+    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+      <h4>{{movie.movie_name}}</h4>
+      <p class="tag">HTML, CSS, JS, WordPress</p>
+      <p class="text_column">{{movie.sypnosis}}</p>
+    </div>
+   {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% comment %} <input type="submit" value="Recommend"> {% endcomment %}
+ 
+
+      <div class="col-6 col-lg-6">
+        <blockquote>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <small>Someone famous in <cite title="Source Title">Source Title</cite></small> </blockquote>
+      </div>
+      <div class="col-6 col-lg-6">
+        <blockquote>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <small>Someone famous in <cite title="Source Title">Source Title</cite></small> </blockquote>
+      </div>
+    </div>
+    
+  </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+     
+        {% if user_entries < 1 %}
+        <div class=" text-center col-sm-6 col-lg-3 col-sm-offset-3 col-md-3 col-xs-offset-4 col-xs-5 col-lg-offset-0"><a class="btn  btn-block btn-lg btn-success" href="{% url 'mainpage:result' %}">Recommend me something</a></div>
+        {% else %}
+        <div class=" text-center col-sm-6 col-lg-3 col-sm-offset-3 col-md-3 col-xs-offset-4 col-xs-5 col-lg-offset-0"><a class="btn  btn-block btn-lg btn-success" href="#"> {{ user_entries }}  left</a></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <!-- /container -->
+  
+  <!-- / CONTAINER--> 
+</section>
+<div class="well"> </div>
+
+<!-- FOOTER -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-3 col-xs-12 col-lg-6">
+      <div class="jumbotron">
+        <div class="row text-center">
+          <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Request a free </h2>
+          </div>
+          <div class="text-center col-lg-12"> 
+            <!-- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form -->
+            <form role="form" id="feedbackForm" class="text-center">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <span class="help-block" style="display: none;">Please enter your name.</span></div>
+              <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span></div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message"></textarea>
+                <span class="help-block" style="display: none;">Please enter a message.</span></div>
+              <span class="help-block" style="display: none;">Please enter a the security code.</span>
+              <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" style=" margin-top: 10px;"> Send</button>
+            </form>
+            <!-- END CONTACT FORM --> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- / FOOTER --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="{% static 'js/bootstrap.js'%}"></script>
+</body>
+</html>

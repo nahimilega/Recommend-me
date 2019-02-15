@@ -1,0 +1,301 @@
+{% load staticfiles %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Movie Recommendation System</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <script src="aa/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "aa/grid.css" %}">
+    <link rel="stylesheet" href="{% static "aa/style.css" %}">
+    <link rel="stylesheet" href="{% static "aa/mailform.css" %}">
+    <link rel="stylesheet" href="{% static "aa/search.css" %}">
+    <link rel="stylesheet" href="{% static "aa/camera.css" %}">
+    <link rel="stylesheet" href="{% static "aa/google-map.css" %}">
+    <link rel="stylesheet" href="{% static "aa/owl-carousel.css" %}">
+    <link rel="stylesheet" href="{% static "aa/animate.css" %}">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,500,800,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static "aa/font-awesome.css" %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="{% static "aa/jquery.js" %}"></script>
+    <script src="{% static "aa/jquery-migrate-1.2.1.js" %}"></script>
+
+    <!--[if lt IE 9]>
+    <html class="lt-ie9">
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="{% static 'aa/device.min.js' %}"></script>
+</head>
+<body>
+<div class="page text-center">
+    <!--========================================================
+                              HEADER
+    =========================================================-->
+    <header>
+        <div id="stuck_container" class="stuck_container">
+            <div class="container ">
+               
+                <div class="brand">
+                    <h1 class="brand_name">
+                        <a href="./">Recommend Me </a>
+                    </h1>
+                </div>
+
+                
+                <!--  Navbar -->
+                
+                <!--END  Navbar -->
+            </div>
+        </div>
+        <section class="bg-primary  well-xs">
+            <div class="container">
+                <div class="row">
+                    <!-- Inline-list -->
+
+                    
+                    <!-- END Inline-list -->
+                </div>
+            </div>
+        </section>
+    </header>
+    <!--========================================================
+                              CONTENT
+    =========================================================-->
+    <main>
+
+        <!-- Camera 
+        <div class="camera_container text-center">
+            <div id="camera" class="camera_wrap text-center">
+                <div data-src="images/page-1_slide01.jpg">
+                    <div class="camera_caption fadeIn ">
+
+                        <blockquote class="quote text-shadow">
+                            <h2>
+                                <cite class=""> The SpongeBob Movie</cite>
+                            </h2>
+                            <p>
+                                <q>
+                                    «SpongeBob SquarePants takes leave from the town of Bikini Bottom
+                                    in order to track down King Neptune's stolen crown.»
+                                </q>
+                            </p>
+                        </blockquote>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default btn-md ">
+                                Learn more
+                            </a>
+                            <a href="#" class="btn btn-default btn-md">
+                                watch trailer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div data-src="images/page-1_slide02.jpg">
+                    <div class="camera_caption fadeIn">
+
+                        <blockquote class="quote text-shadow">
+                            <h2>
+                               <cite class=""> Mad Max</cite>
+                            </h2>
+                            <p>
+                            <q>
+                                «In a self-destructing world, a vengeful Australian policeman sets out
+                                to stop a violent motorcycle gang»
+                            </q>
+                            </p>
+                        </blockquote>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default btn-md ">
+                                Learn more
+                            </a>
+                            <a href="#" class="btn btn-default btn-md">
+                             
+                </div>
+            </div>
+        </div>
+-->
+        <!-- END Camera -->
+
+        <!--  Watch your favorite movies online -->
+        <section class=" well-md parallax bg-contrast" data-url="images/parallax1.png" data-speed="1" data-mobile="true" >
+            <div class="container">
+                <h2>
+                    Let's find some good movies for you
+                </h2>
+
+            </div>
+        </section>
+        <!-- END Watch your favorite movies online -->
+
+        <!--  More movies -->
+        <section class="well-lg">
+            <div class="container " style="width: 80%;height:2000px;overflow: auto">
+
+                <style>
+                form {
+	width: 100px;
+    align:center;
+  }
+  
+ .button {
+	border: 0;
+	background: transparent;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+	float: right;
+    align:left;
+	color: white;
+  
+  }
+  .button2 {
+	border: 0;
+	background: transparent;
+	font-size: 1.5em;
+	margin: 0;
+    align:center;
+	padding: 0;
+	float: right;
+  	color: red;
+  }
+  
+  button:hover,
+  button:hover + button,
+  button:hover + button + button,
+  button:hover + button + button + button,
+  button:hover + button + button + button + button {
+	color: #ffed2d;
+  }
+</style>
+                <div class="row flow-offset-2 ">
+                {% for movie in all_movies  %}
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInDown"  style="width: 25%;height:100%;overflow: auto">
+                        <div class="product">
+                            <a href="#"> <img src="{{ movie.thumbnail }}" alt=" Image not available"/></a>
+
+                            <div class="product__body">
+                                <a class="fa fa-imdb icon-sm" href="{{ movie.imbd_link }}"><span class="value">{{ movie.imdb }}</span></a>
+                            </div>
+                        </div>
+                            <h5>{{movie.movie_name}} {{movie.year}} </h5>
+                            <h6>{{ movie.genre }}</h6>
+                        <form action="{% url 'mainpage:store_data' %}" method="POST"  >
+                        {% csrf_token %}
+                        <input type="hidden"  name="rating[post_id]" value="{{movie.id}}">
+                        {% if movie.id in movies_user_have_chosen %}
+                            {% with movie_unique_id=movie.id %}
+  
+                            {% for key, value in current_rating.items %} 
+                                {% if key == movie_unique_id %} 
+                                    {% with rating_of_this_movie=value %}
+                                        <div align="right">
+                                        <button {% if  rating_of_this_movie == 5 %} class="button button2"  {% else %} class="button"  {% endif %} type="submit" name="rating[rating]" value="5">&#9733;</button>
+                                        <button {% if  rating_of_this_movie > 3 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="4">&#9733;</button>
+                                        <button {% if  rating_of_this_movie > 2 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="3">&#9733;</button>
+                                        <button {% if  rating_of_this_movie > 1 %} class="button button2"   {% else %} class="button" {% endif %} type="submit" name="rating[rating]" value="2">&#9733;</button>
+                                        <button {% if  rating_of_this_movie > 0 %} class="button button2"   {% else %} class="button" {% endif %}  type="submit" name="rating[rating]" value="1">&#9733;</button>
+                                        </div>
+      
+                                    {% endwith %} 
+       
+                                {% endif %}
+                            {% endfor %}
+      
+                            {% endwith %} 
+                        {% else %}
+                                    <button  class="button"   type="submit" name="rating[rating]" value="5">&#9733;</button>
+                                    <button  class="button"  type="submit" name="rating[rating]" value="4">&#9733;</button>
+                                    <button class="button"  type="submit" name="rating[rating]" value="3">&#9733;</button>
+                                    <button  class="button"  type="submit" name="rating[rating]" value="2">&#9733;</button>
+                                    <button class="button"   type="submit" name="rating[rating]" value="1">&#9733;</button>
+
+
+                        {% endif %}
+
+  
+                            </form> 
+                        
+                    </div>
+                {% endfor %}            
+                    
+                    
+                    
+                    
+                </div>
+                
+            </div>
+           
+
+            {% if user_entries < 1 %}
+               <a class="btn  btn-block btn-lg btn-success" href="{% url 'mainpage:result' %}"> <div class="btn btn-default btn-md offset-4">Recommend me something</div></a>
+            {% else %}
+                <div class="btn btn-default btn-md offset-4"> {{ user_entries }}  left</a></div>
+            {% endif %}
+                <div class="container well-sm">
+                
+                
+                    
+                    
+                    
+                    
+            
+                </div>
+            </div>
+        </section>
+        <!-- END More movies -->
+
+       
+
+        
+        
+
+    </main>
+
+   
+    
+</div>
+
+<script src="aa/script.js"></script>
+<!-- begin olark code -->
+{% comment %} 
+<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+    f[z]=function(){
+        (a.s=a.s||[]).push(arguments)};var a=f[z]._={
+    },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+        f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+        0:+new Date};a.P=function(u){
+        a.p[u]=new Date-a.p[0]};function s(){
+        a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+        hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+        return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+        b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+        b.contentWindow[g].open()}catch(w){
+        c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+        var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+        b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+    loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('7830-582-10-3714');/*]]>*/</script><noscript><a href="https://www.olark.com/site/7830-582-10-3714/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+ 
+<script type="text/javascript">
+ var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7078796-5']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();</script>
+  {% endcomment %}
+</body><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9FT69');</script><!-- End Google Tag Manager -->
+</html>
