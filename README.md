@@ -1,11 +1,40 @@
-# Precog
+# Recommend Me
 
+This is a movie recommendation system that recommends movie based on the ratings givev by the user. 
+It uses Django for its backend
+This is the code of webite hosted on this link- 
 https://movie-watch-time.herokuapp.com/mainpage/form
 
 
 
+## Installation
 
-#Sources of reference <br />
+Download this repository
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install dependencies of this project
+
+```bash
+pip install -r requirenments.txt
+```
+
+## Usage
+
+To run the website on the local host
+```bash
+cd movie_recommendation_system
+python manage.py runserver
+
+```
+Now open your web browser on paste the following url 
+
+```
+http://127.0.0.1:8000/mainpage/form
+```
+
+
+
+
+# Sources of reference <br />
 
 Movie lens 2M dataset<br />
 StackOverflow<br />
